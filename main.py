@@ -5,24 +5,18 @@ win = Tk() #creates an instance of our window
 
 #theLabel = Label(win,text = "this is too easy")
 
-#theLabel.pack()# lazy way , just packs the label
+#widgets  , FRAME , LABEL , BUTTON , ENTRY
 
+label1 = Label(win,text = "username")
+label2 = Label(win,text = "password")
+entry1 = Entry(win)
+entry2 = Entry(win)
 
-topFrame = Frame(win)
-topFrame.pack(side  = TOP )
-bottomFrame = Frame(win)
-bottomFrame.pack(side = BOTTOM)#packs the bottom frame on the bottom
+label1.grid(row=0)
+label2.grid(row=1)
 
+entry1.grid(row=0,column=1)
+entry2.grid(row=1,column=2)
 
-#button_1 = Button(topFrame,text = "BUTTON1" , fg ="red")
-#button_2 = Button(topFrame,text = "BUTTON2" , fg ="blue")
-#button_3 = Button(topFrame,text = "BUTTON3" , fg ="red")
-#button_4 = Button(bottomFrame,text = "BUTTON4" , bg ="yellow")
-
-#button_1.pack(side = "left")
-#button_2.pack(side  = "right")
-#button_3.pack()
-#button_4.pack()
- 
 
 win.mainloop()#runs the code
