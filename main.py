@@ -15,8 +15,10 @@ entry2 = Entry(win)
 label1.grid(row=0)
 label2.grid(row=1)
 
-entry1.grid(row=0,column=1)
-entry2.grid(row=1,column=2)
+entry1.grid(row=0,column=1 )
+entry2.grid(row=1,column=2,sticky = E)
 
+checkBox = Checkbutton(win,text = "keep me signed in")#check button
+checkBox.grid( columnspan =2)
 
 win.mainloop()#runs the code
