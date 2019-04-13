@@ -64,5 +64,7 @@ input5 = canvas.create_text(200,280,text = '1')#s1's input 1 to s3
 input6 = canvas.create_text(460,280,text ='0')#s2's input 0 to s4
 input7 = canvas.create_text(260,280,text ='0')#s3's input 0 to s1
 input8 = canvas.create_text(400,280,text='1')#s4's input 1 to s2
+input9 = canvas.create_text(230,450,text ='1')#s3's input 1 self loop
+input10 = canvas.create_text(430,450,text='0')#s4's input 0 self loop
 
 root.mainloop()#runs the application
