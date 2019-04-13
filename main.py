@@ -49,55 +49,20 @@ line3 = canvas.create_line(210,225,210,325)#from s1 to s3
 line4 = canvas.create_line(250,225,250,325)#from s3 to s1
 line5 = canvas.create_line(410,225,410,325)#from s2 to s4
 line6 = canvas.create_line(450,225,450,325)#from s4 to s2
-line7 =canvas.create_line(190,150,80,160,190,210 ,smooth='true')#self loop on s1
+line7 = canvas.create_line(190,150,80,160,190,210 ,smooth='true')#self loop on s1
 line8 = canvas.create_line(470,150,580,160,470,210,smooth='true')#self loop on s2
+line9 = canvas.create_line(210,390,230,470,250,390,smooth='true')#self loop on s3
+line10 = canvas.create_line(410,390,430,470,450,390,smooth='true')#self loop on s4
 
+######################################################################
 
+input1 = canvas.create_text(260,90,text="0")#s0 input 0 to s1
+input2 = canvas.create_text(410,90,text ="1")#s0 input to s2
+input3 = canvas.create_text(120,170,text ='0')#s1 input 0 self loop
+input4 = canvas.create_text(540,170,text = '1')#s2's input 1 self loop
+input5 = canvas.create_text(200,280,text = '1')#s1's input 1 to s3
+input6 = canvas.create_text(460,280,text ='0')#s2's input 0 to s4
+input7 = canvas.create_text(260,280,text ='0')#s3's input 0 to s1
+input8 = canvas.create_text(400,280,text='1')#s4's input 1 to s2
 
-
-root.mainloop()#runs the code
-
-
-
-
-
-#///////////////////////////////////////////////////
-
-
-
-
-
-#theLabel = Label(win,text = "this is too easy")
-
-#widgets  , FRAME , LABEL , BUTTON , ENTRY
-
-#label1 = Label(win,text = "username")
-#label2 = Label(win,text = "password")
-#entry1 = Entry(win)
-#entry2 = Entry(win)
-
-#label1.grid(row=0)
-#label2.grid(row=1)
-
-#entry1.grid(row=0,column=1 )
-#entry2.grid(row=1,column=2,sticky = E)
-
-#checkBox = Checkbutton(win,text = "keep me signed in")#check button
-#checkBox.grid( columnspan =2)
-
-
-#/////////////////////////////////////////////////////////////
-
-
-#f =  Frame(win, width="500",height="500")
-
-#def right(event):
- #   print("Right")
-
-#def left(event):
- #   print("Right")
-
-
-#f.bind("<Button-1>", left)
-#f.bind("<Button-3>" , right)
-#f.pack()
+root.mainloop()#runs the application
