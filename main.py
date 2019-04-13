@@ -1,4 +1,17 @@
 from tkinter import * #importing library and making a reference
+import time
+
+def testString():
+    canvas.itemconfig(s0_label,fill = "red")
+    canvas.after(5000,reset)
+
+    
+
+def reset():
+    canvas.itemconfig(s0_label,fill = "blue")
+    
+    
+
 
 root = Tk()
 
@@ -7,7 +20,7 @@ title  = Label(root , text=  "DFA for langauge that must start and end with the 
 title.grid(row = 0)
 entryString = Entry(root )
 entryString.grid(row = 1 , column  = 0)
-button = Button(root, text = "Submit")
+button = Button(root, text = "Submit",command=testString)
 button.grid(row = 2 ,column =0)
 canvas = Canvas(root, width =500 ,height = 500)
 canvas.grid(row = 1 ,column = 1)
@@ -26,6 +39,10 @@ s1_label = canvas.create_text(230,180,text = "s1")
 s2_label = canvas.create_text(430,180,text = "s2")
 s3_label = canvas.create_text(230,360,text = "s3")
 s4_label =canvas.create_text(430,360,text ="s4")
+
+
+
+
 
 
 
