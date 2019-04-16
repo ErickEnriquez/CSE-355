@@ -1,17 +1,54 @@
 from tkinter import * #importing library and making a reference
 import time
 
-def testString():
-    canvas.itemconfig(s0_label,fill = "red")
-    canvas.after(5000,reset)
+def getString():
+   s  = entryString.get()#get the string user enters
+   string = list(s)#cast our string into a list
+   for i in string:
+       if i != '1'  and i != '0':
+           quit()#quit the program
+   check(string)
+   
 
-    
+   
+def check(string):
+    if not string:
+        return
+    canvas.after(2000,check,string)
+    print(string.pop(0))
+
+
+
+'''def transitionFuntion(state , symbol):
+    if(state == 's0' and symbol == '0' ):
+        canvas.itemconfig(input1 ,fill = 'red')
+        return 's1'
+    elif (state == 's0' and symbol == '1'):
+        canvas.itemconfig(input2 ,fill = 'red')
+        return 's2'
+    elif (state == 's1' and symbol == '0'):
+        canvas.itemconfig(input3,fill = 'red')
+        return 's1'
+    elif(state == 's1' and symbol == '1'):
+        return 's3'
+    elif (state == 's2' and symbol == '0'):
+        return 's4'
+    elif (state == 's2' and symbol == '1'):
+        return 's2'
+    elif (state == 's3' and symbol == '0'):
+        return 's1'
+    elif (state == 's3' and symbol == '1'):
+        return 's3'
+    elif (state == 's4' and symbol == '0'):
+        return 's4'
+    elif (state == 's4' and symbol == '1'):
+        return 's2'
 
 def reset():
-    canvas.itemconfig(s0_label,fill = "blue")
-    
-    
-
+    canvas.itemconfig(input1,fill = 'black')
+    canvas.itemconfig(input2,fill = 'black')
+    canvas.itemconfig(input3,fill ='black')
+'''
 
 root = Tk()
 
@@ -20,7 +57,7 @@ title  = Label(root , text=  "DFA for langauge that must start and end with the 
 title.grid(row = 0)
 entryString = Entry(root )
 entryString.grid(row = 1 , column  = 0)
-button = Button(root, text = "Submit",command=testString)
+button = Button(root, text = "Submit",command=getString)
 button.grid(row = 2 ,column =0)
 canvas = Canvas(root, width =600 ,height = 500)
 canvas.grid(row = 1 ,column = 1)
