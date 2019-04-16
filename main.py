@@ -38,27 +38,43 @@ def transitionFuntion(state , symbol):
         return 's2'
     elif (state == 's1' and symbol == '0'):
         canvas.itemconfig(input3,fill = 'red')
+        canvas.itemconfig(line7,fill ='red')
+        canvas.itemconfig(arrow3,fill = 'red')
         return 's1'
     elif(state == 's1' and symbol == '1'):
         canvas.itemconfig(input5,fill = 'red')
+        canvas.itemconfig(line3,fill ='red')
+        canvas.itemconfig(arrow5,fill = 'red')
         return 's3'
     elif (state == 's2' and symbol == '0'):
         canvas.itemconfig(input6,fill = 'red')
+        canvas.itemconfig(line6,fill ='red')
+        canvas.itemconfig(arrow8,fill = 'red')
         return 's4'
     elif (state == 's2' and symbol == '1'):
         canvas.itemconfig(input4,fill = 'red')
+        canvas.itemconfig(line8,fill ='red')
+        canvas.itemconfig(arrow4,fill = 'red')
         return 's2'
     elif (state == 's3' and symbol == '0'):
         canvas.itemconfig(input7,fill = 'red')
+        canvas.itemconfig(line4,fill ='red')
+        canvas.itemconfig(arrow6,fill = 'red')
         return 's1'
     elif (state == 's3' and symbol == '1'):
         canvas.itemconfig(input9,fill = 'red')
+        canvas.itemconfig(line9,fill ='red')
+        canvas.itemconfig(arrow9,fill = 'red')
         return 's3'
     elif (state == 's4' and symbol == '0'):
         canvas.itemconfig(input10,fill = 'red')
+        canvas.itemconfig(line10,fill ='red')
+        canvas.itemconfig(arrow10,fill = 'red')
         return 's4'
     elif (state == 's4' and symbol == '1'):
         canvas.itemconfig(input8,fill = 'red')
+        canvas.itemconfig(line5,fill ='red')
+        canvas.itemconfig(arrow7,fill = 'red')
         return 's2'
 
 def reset(i):#resets the GUI
@@ -173,8 +189,8 @@ line1 = canvas.create_line(300,70, 230 ,135)#from state 0 to state 1
 line2 = canvas.create_line(370,70,430,135)# from s0 to s2
 line3 = canvas.create_line(210,225,210,325)#from s1 to s3
 line4 = canvas.create_line(250,225,250,325)#from s3 to s1
-line5 = canvas.create_line(410,225,410,325)#from s2 to s4
-line6 = canvas.create_line(450,225,450,325)#from s4 to s2
+line5 = canvas.create_line(410,225,410,325)#from s4 to s2
+line6 = canvas.create_line(450,225,450,325)#from s2 to s4
 line7 = canvas.create_line(190,150,80,160,190,210 ,smooth='true')#self loop on s1
 line8 = canvas.create_line(470,150,580,160,470,210,smooth='true')#self loop on s2
 line9 = canvas.create_line(210,390,230,470,250,390,smooth='true')#self loop on s3
@@ -193,7 +209,7 @@ input8 = canvas.create_text(400,280,text='1')#s4's input 1 to s2
 input9 = canvas.create_text(230,450,text ='1')#s3's input 1 self loop
 input10 = canvas.create_text(430,450,text='0')#s4's input 0 self loop
 
-#################################################################
+#####################     ARROWS    ################################
 
 
 arrow1 = canvas.create_oval(230,125,240,135,fill = 'black')#arrow from s0 to s1
