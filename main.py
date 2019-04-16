@@ -9,6 +9,7 @@ def getString():
        if i != '1'  and i != '0':
            quit()#quit the program
    state = 's0'
+   canvas.after(0,resetStates,1)#reset our states before working on the new input
    check(string,state)
    
 
@@ -60,8 +61,7 @@ def transitionFuntion(state , symbol):
 def reset(i):#resets the GUI
     if i == 0:
         return
-    canvas.itemconfig(s0_label,fill= 'black')
-    canvas.itemconfig(state0,outline = 'black')
+    ################################################ reset the inputs
     canvas.itemconfig(input1,fill = 'black')
     canvas.itemconfig(input2,fill = 'black')
     canvas.itemconfig(input3,fill ='black')
@@ -73,6 +73,23 @@ def reset(i):#resets the GUI
     canvas.itemconfig(input9,fill ='black')
     canvas.itemconfig(input10,fill ='black')
     canvas.after(0,reset,0)
+
+def resetStates(i):
+    if i == 0:
+        return
+    canvas.itemconfig(s0_label,fill= 'black')
+    canvas.itemconfig(state0,outline = 'black')
+    canvas.itemconfig(s1_label,fill= 'black')
+    canvas.itemconfig(state1,outline = 'black')
+    canvas.itemconfig(accept_s1,outline = 'black')
+    canvas.itemconfig(s2_label,fill= 'black')
+    canvas.itemconfig(state2,outline = 'black')
+    canvas.itemconfig(accept_s2,outline = 'black')
+    canvas.itemconfig(s3_label,fill= 'black')
+    canvas.itemconfig(state3,outline = 'black')
+    canvas.itemconfig(s4_label,fill= 'black')
+    canvas.itemconfig(state4,outline = 'black')
+    canvas.after(0,resetStates,0)
 
 def Qfinal(state):
     if(state == 's0'):
@@ -93,9 +110,8 @@ def Qfinal(state):
         canvas.itemconfig(s4_label,fill = 'red')
         canvas.itemconfig(state4,outline = 'red')
 
-'''def clear():
-    canvas.after(0,reset,1)
-'''
+
+
 
 root = Tk()
 
@@ -106,8 +122,6 @@ entryString = Entry(root )
 entryString.grid(row = 1 , column  = 0)
 button = Button(root, text = "Submit",command=getString)
 button.grid(row = 2 ,column =0)
-#reset = Button(root,text = 'reset' ,command =clear)
-#rese
 canvas = Canvas(root, width =600 ,height = 500)
 canvas.grid(row = 1 ,column = 1)
 
