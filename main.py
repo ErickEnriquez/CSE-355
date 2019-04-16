@@ -1,25 +1,31 @@
 from tkinter import * #importing library and making a reference
 import time
 
+
 def getString():
    s  = entryString.get()#get the string user enters
    string = list(s)#cast our string into a list
    for i in string:
        if i != '1'  and i != '0':
            quit()#quit the program
-   check(string)
+   state = 's0'
+   check(string,state)
    
 
    
-def check(string):
-    if not string:
+def check(string,state):#get string contents recursively
+    if not string:#if list is empty
+        Qfinal(state)
         return
-    canvas.after(2000,check,string)
-    print(string.pop(0))
+   
+    symbol = string.pop(0)#pop the symbol from the list
+    state = transitionFuntion(state,symbol)#get our new state
+    canvas.after(1000,reset,1)#reset the gui 
+    canvas.after(1000,check,string ,state)#recursively call check again
+   
 
 
-
-'''def transitionFuntion(state , symbol):
+def transitionFuntion(state , symbol):
     if(state == 's0' and symbol == '0' ):
         canvas.itemconfig(input1 ,fill = 'red')
         return 's1'
@@ -30,24 +36,65 @@ def check(string):
         canvas.itemconfig(input3,fill = 'red')
         return 's1'
     elif(state == 's1' and symbol == '1'):
+        canvas.itemconfig(input5,fill = 'red')
         return 's3'
     elif (state == 's2' and symbol == '0'):
+        canvas.itemconfig(input6,fill = 'red')
         return 's4'
     elif (state == 's2' and symbol == '1'):
+        canvas.itemconfig(input4,fill = 'red')
         return 's2'
     elif (state == 's3' and symbol == '0'):
+        canvas.itemconfig(input7,fill = 'red')
         return 's1'
     elif (state == 's3' and symbol == '1'):
+        canvas.itemconfig(input9,fill = 'red')
         return 's3'
     elif (state == 's4' and symbol == '0'):
+        canvas.itemconfig(input10,fill = 'red')
         return 's4'
     elif (state == 's4' and symbol == '1'):
+        canvas.itemconfig(input8,fill = 'red')
         return 's2'
 
-def reset():
+def reset(i):#resets the GUI
+    if i == 0:
+        return
+    canvas.itemconfig(s0_label,fill= 'black')
+    canvas.itemconfig(state0,outline = 'black')
     canvas.itemconfig(input1,fill = 'black')
     canvas.itemconfig(input2,fill = 'black')
     canvas.itemconfig(input3,fill ='black')
+    canvas.itemconfig(input4,fill = 'black')
+    canvas.itemconfig(input5,fill = 'black')
+    canvas.itemconfig(input6,fill = 'black')
+    canvas.itemconfig(input7,fill ='black')
+    canvas.itemconfig(input8,fill = 'black')
+    canvas.itemconfig(input9,fill ='black')
+    canvas.itemconfig(input10,fill ='black')
+    canvas.after(0,reset,0)
+
+def Qfinal(state):
+    if(state == 's0'):
+        canvas.itemconfig(s0_label,fill = 'red')
+        canvas.itemconfig(state0,outline = 'red')
+    elif(state == 's1'):
+        canvas.itemconfig(s1_label,fill = 'red')
+        canvas.itemconfig(state1,outline = 'red')
+        canvas.itemconfig(accept_s1,outline = 'red')
+    elif(state == 's2'):
+        canvas.itemconfig(s2_label,fill = 'red')
+        canvas.itemconfig(state2,outline = 'red')
+        canvas.itemconfig(accept_s2,outline = 'red')
+    elif(state == 's3'):
+        canvas.itemconfig(s3_label,fill = 'red')
+        canvas.itemconfig(state3,outline = 'red')
+    elif(state == 's4'):
+        canvas.itemconfig(s4_label,fill = 'red')
+        canvas.itemconfig(state4,outline = 'red')
+
+'''def clear():
+    canvas.after(0,reset,1)
 '''
 
 root = Tk()
@@ -59,6 +106,8 @@ entryString = Entry(root )
 entryString.grid(row = 1 , column  = 0)
 button = Button(root, text = "Submit",command=getString)
 button.grid(row = 2 ,column =0)
+#reset = Button(root,text = 'reset' ,command =clear)
+#rese
 canvas = Canvas(root, width =600 ,height = 500)
 canvas.grid(row = 1 ,column = 1)
 
