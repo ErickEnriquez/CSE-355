@@ -1,20 +1,19 @@
-from tkinter import * #importing library and making a reference
-import time
+from tkinter import * #importing library 
 
 
-def getString():
+def getString():#grabs the string , checks to see it is correct type and then calls the driver program
    s  = entryString.get()#get the string user enters
    string = list(s)#cast our string into a list
    for i in string:
        if i != '1'  and i != '0':
            quit()#quit the program
-   state = 's0'
+   state = 's0'#initial state
    canvas.after(0,resetStates,1)#reset our states before working on the new input
-   check(string,state)
+   check(string,state)#driver function
    
 
    
-def check(string,state):#get string contents recursively
+def check(string,state):#get go through and recursively go trough the transitions
     if not string:#if list is empty
         Qfinal(state)
         return
@@ -29,9 +28,13 @@ def check(string,state):#get string contents recursively
 def transitionFuntion(state , symbol):
     if(state == 's0' and symbol == '0' ):
         canvas.itemconfig(input1 ,fill = 'red')
+        canvas.itemconfig(line1,fill ='red')
+        canvas.itemconfig(arrow1,fill = 'red')
         return 's1'
     elif (state == 's0' and symbol == '1'):
         canvas.itemconfig(input2 ,fill = 'red')
+        canvas.itemconfig(line2,fill ='red')
+        canvas.itemconfig(arrow2,fill = 'red')
         return 's2'
     elif (state == 's1' and symbol == '0'):
         canvas.itemconfig(input3,fill = 'red')
@@ -72,9 +75,32 @@ def reset(i):#resets the GUI
     canvas.itemconfig(input8,fill = 'black')
     canvas.itemconfig(input9,fill ='black')
     canvas.itemconfig(input10,fill ='black')
+    ############################################### reset lines
+    canvas.itemconfig(line1,fill ='black')
+    canvas.itemconfig(line2,fill ='black')
+    canvas.itemconfig(line3,fill ='black')
+    canvas.itemconfig(line4,fill ='black')
+    canvas.itemconfig(line5,fill ='black')
+    canvas.itemconfig(line6,fill ='black')
+    canvas.itemconfig(line7,fill ='black')
+    canvas.itemconfig(line8,fill ='black')
+    canvas.itemconfig(line9,fill ='black')
+    canvas.itemconfig(line10,fill ='black')
+    ############################################# reset the arrows
+    canvas.itemconfig(arrow1,fill = 'black')
+    canvas.itemconfig(arrow2,fill = 'black')
+    canvas.itemconfig(arrow3,fill = 'black')
+    canvas.itemconfig(arrow4,fill = 'black')
+    canvas.itemconfig(arrow5,fill = 'black')
+    canvas.itemconfig(arrow6,fill = 'black')
+    canvas.itemconfig(arrow7,fill = 'black')
+    canvas.itemconfig(arrow8,fill = 'black')
+    canvas.itemconfig(arrow9,fill = 'black')
+    canvas.itemconfig(arrow10,fill = 'black')
+    ##############################################
     canvas.after(0,reset,0)
 
-def resetStates(i):
+def resetStates(i):##########reset the states
     if i == 0:
         return
     canvas.itemconfig(s0_label,fill= 'black')
@@ -91,7 +117,7 @@ def resetStates(i):
     canvas.itemconfig(state4,outline = 'black')
     canvas.after(0,resetStates,0)
 
-def Qfinal(state):
+def Qfinal(state):#marks colors in our final state
     if(state == 's0'):
         canvas.itemconfig(s0_label,fill = 'red')
         canvas.itemconfig(state0,outline = 'red')
@@ -113,9 +139,9 @@ def Qfinal(state):
 
 
 
-root = Tk()
+root = Tk()#initialize a object
 
-
+##############    entry box , button  , label , and canvas ################################### 
 title  = Label(root , text=  "DFA for langauge that must start and end with the same symbol\nL = {{0,1}* | start and end with same symbol}\nTest your String below")
 title.grid(row = 0)
 entryString = Entry(root )
@@ -125,7 +151,7 @@ button.grid(row = 2 ,column =0)
 canvas = Canvas(root, width =600 ,height = 500)
 canvas.grid(row = 1 ,column = 1)
 
-###########################################################################
+####################   States Themselves      ####################################
 
 state0 = canvas.create_oval(300,20,360,80)
 state1 = canvas.create_oval(200,150,260,210)#accept state
@@ -141,7 +167,7 @@ s3_label = canvas.create_text(230,360,text = "s3")
 s4_label =canvas.create_text(430,360,text ="s4")
 
 
-###################################################################
+######################   Transition Lines      ###############################
 
 line1 = canvas.create_line(300,70, 230 ,135)#from state 0 to state 1
 line2 = canvas.create_line(370,70,430,135)# from s0 to s2
@@ -154,7 +180,7 @@ line8 = canvas.create_line(470,150,580,160,470,210,smooth='true')#self loop on s
 line9 = canvas.create_line(210,390,230,470,250,390,smooth='true')#self loop on s3
 line10 = canvas.create_line(410,390,430,470,450,390,smooth='true')#self loop on s4
 
-######################################################################
+##################       INPUTS        ###########################################
 
 input1 = canvas.create_text(260,90,text="0")#s0 input 0 to s1
 input2 = canvas.create_text(410,90,text ="1")#s0 input to s2
@@ -166,5 +192,21 @@ input7 = canvas.create_text(260,280,text ='0')#s3's input 0 to s1
 input8 = canvas.create_text(400,280,text='1')#s4's input 1 to s2
 input9 = canvas.create_text(230,450,text ='1')#s3's input 1 self loop
 input10 = canvas.create_text(430,450,text='0')#s4's input 0 self loop
+
+#################################################################
+
+
+arrow1 = canvas.create_oval(230,125,240,135,fill = 'black')#arrow from s0 to s1
+arrow2 = canvas.create_oval(420,125,430,135,fill = 'black')#arrow from s0 to s2
+arrow3 = canvas.create_oval(180,202,190,212,fill = 'black')#self loop arrow on s1
+arrow4 = canvas.create_oval(470,202,480,212,fill = 'black')#self loop arrow on s2
+arrow5 = canvas.create_oval(205,320,215,330,fill = 'black')#arrow from s1 to s3
+arrow6 = canvas.create_oval(245,220,255,230,fill = 'black')#arrow from s3 to s1
+arrow7 = canvas.create_oval(405,220,415,230,fill = 'black')#arrow from s4 to s2
+arrow8 = canvas.create_oval(445,320,455,330,fill = 'black')#arrow from s2 to s4
+arrow9 = canvas.create_oval(245,389,255,399,fill = 'black')#self loop arrow on s3
+arrow10 = canvas.create_oval(405,389,415,399,fill = 'black')#self loop arrow on s4
+
+
 
 root.mainloop()#runs the application
